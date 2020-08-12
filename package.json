@@ -62,5 +62,11 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {
+    "@types/styled-components": "^5.1.2",
+    "@types/styled-system": "^5.1.10",
+    "styled-components": "^5.1.1",
+    "styled-system": "^5.1.5"
+  }
 }
