@@ -46,65 +46,135 @@ const TextComponent = props => {
 };
 
 let _$3 = t => t,
-    _t$3;
-const AddButton = styled.div(_t$3 || (_t$3 = _$3`
+    _t$3,
+    _t2,
+    _t3,
+    _t4,
+    _t5,
+    _t6,
+    _t7,
+    _t8;
+const HoverContainer = styled.div(_t$3 || (_t$3 = _$3`
+  position: absolute;
+  width: max-content;
+  margin-top: 20px;
+  display: none;
+`));
+const Triangle = styled.div(_t2 || (_t2 = _$3`
+  width: 0;
+  height: 0;
+  border: solid 8px;
+  border-color: transparent transparent #050b21 transparent;
+  margin: 0 auto;
+`));
+const Rectangle = styled.div(_t3 || (_t3 = _$3`
+  width: max-content;
+  padding: 0px 5px;
+  height: 20px;
+  border-radius: 2px;
+  background-color: #050b21;
+  font-size: 8px;
+  letter-spacing: 0.33px;
+  color: #ffffff !important;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+`));
+const Wrapper = styled.div(_t4 || (_t4 = _$3`
+  &:hover ${0} {
+    display: initial;
+  }
+  display: flex;
+`), HoverContainer);
+const AvatarImage = styled.div(_t5 || (_t5 = _$3`
   border-radius: 50%;
+  border: ${0};
+`), props => props.active ? "1px solid #3498db;" : "none;");
+const MediumAvatar = styled(AvatarImage)(_t6 || (_t6 = _$3`
+  height: 50px;
+  width: 50px;
+`));
+const SmallAvatar = styled(AvatarImage)(_t7 || (_t7 = _$3`
   height: 20px;
   width: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #fff;
-  // box-shadow: ${0};
-  float: right;
-  cursor: pointer;
-  & :hover {
-    opacity: 0.7;
-    transition: opacity 0.3s;
-  }
-`), ({
-  theme
-}) => theme.toggleshadow);
+  background: ${0};
+`), props => props.color ? props.color : "none");
+const MmAvatar = styled(AvatarImage)(_t8 || (_t8 = _$3`
+  height: 50px;
+  width: 50px;
+  margin: 15px;
+`));
 
-const AddTask = ({
-  onClick,
-  Icon
+const Avatar = ({
+  image: _image = "",
+  size: _size = "sm",
+  title: _title = "",
+  color: _color = "",
+  active
 }) => {
-  return React__default.createElement(AddButton, {
-    onClick: onClick
-  }, React__default.createElement(Icon, null));
+  if (_size === "md") {
+    return React__default.createElement(Wrapper, null, _image ? React__default.createElement(MediumAvatar, {
+      active: active,
+      as: "img",
+      src: _image
+    }) : React__default.createElement(MediumAvatar, {
+      active: active,
+      color: _color
+    }), _title ? React__default.createElement(HoverContainer, null, React__default.createElement(Triangle, null), React__default.createElement(Rectangle, null, _title)) : "");
+  } else if (_size === "mm") {
+    return React__default.createElement(Wrapper, null, _image ? React__default.createElement(MmAvatar, {
+      active: active,
+      as: "img",
+      src: _image
+    }) : React__default.createElement(MmAvatar, {
+      active: active,
+      color: _color
+    }), _title ? React__default.createElement(HoverContainer, null, React__default.createElement(Triangle, null), React__default.createElement(Rectangle, null, _title)) : "");
+  } else {
+    return React__default.createElement(Wrapper, null, _image ? React__default.createElement(SmallAvatar, {
+      active: active,
+      as: "img",
+      src: _image
+    }) : React__default.createElement(SmallAvatar, {
+      active: active,
+      color: _color
+    }), _title ? React__default.createElement(HoverContainer, null, React__default.createElement(Triangle, null), React__default.createElement(Rectangle, null, _title)) : "");
+  }
 };
 
 let _$4 = t => t,
     _t$4;
-const EditButton = styled.div(_t$4 || (_t$4 = _$4`
-  border-radius: 50%;
+const Input = styled.input(_t$4 || (_t$4 = _$4`
   height: 50px;
-  width: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #fff;
-  box-shadow: 0 4px 4px 0 #e9e6e6;
-  cursor: pointer;
-  & :hover {
-    opacity: 0.7;
-    transition: opacity 0.3s;
-  }
+  width: 300px;
+  background-color: white;
+  margin: 20px;
+  border: none;
 `));
-
-const EditTask = ({
-  onClick,
-  Icon
-}) => {
-  return React__default.createElement(EditButton, {
-    onClick: onClick
-  }, React__default.createElement(Icon, null));
-};
 
 let _$5 = t => t,
     _t$5;
-const Button = styled.a(_t$5 || (_t$5 = _$5`
+const IconStyle = styled.svg(_t$5 || (_t$5 = _$5`
+  & use {
+    //fill: ${0} ;
+  }
+`), props => props.theme.colors.icon);
+
+const IconComponent = ({
+  svg,
+  color: _color = "#000",
+  className
+}) => {
+  return React__default.createElement(IconStyle, {
+    as: svg,
+    color: _color,
+    className: className
+  });
+};
+
+let _$6 = t => t,
+    _t$6;
+const Button = styled.a(_t$6 || (_t$6 = _$6`
   padding: 16px 22px;
   margin: 0.5rem 0rem;
   width: 13rem;
@@ -116,9 +186,9 @@ const Button = styled.a(_t$5 || (_t$5 = _$5`
   justifycontent: "space-between";
 `));
 
-let _$6 = t => t,
-    _t$6;
-const SwitchButton = styled.div(_t$6 || (_t$6 = _$6`
+let _$7 = t => t,
+    _t$7;
+const SwitchButton = styled.div(_t$7 || (_t$7 = _$7`
   border-radius: 50%;
   height: 50px;
   width: 50px;
@@ -158,5 +228,5 @@ const ExampleComponent = ({
   }, "Example Component: ", text);
 };
 
-export { AddTask as AddButton, BoxComponent as Box, EditTask as EditButton, ExampleComponent, FlexComponent as Flex, Button as LoginButton, OvalButton, TextComponent as Text };
+export { Avatar, BoxComponent as Box, ExampleComponent, FlexComponent as Flex, IconComponent as Icon, Input, Button as LoginButton, OvalButton, TextComponent as Text };
 //# sourceMappingURL=index.modern.js.map
