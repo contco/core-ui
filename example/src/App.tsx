@@ -1,27 +1,16 @@
 import React from 'react'
-import { LoginButton, Input, Flex, Box, Text } from '@contco/core-ui'
+import Login from './components/Login'
+import { Flex, Box } from '@contco/core-ui'
+import Sidebar from './components/Sidebar'
 
 const App = () => {
   return (
-    <div>
-      <Flex
-        height='100vh'
-        justifyContent='center'
-        alignItems='center'
-        flexDirection='column'
-      >
-        <Text mb={4} fontSize={30}>LOGIN PAGE</Text>
-        <Box mb={3}>
-          <Input placeholder='Username' />
-        </Box>
-        <Box mb={3}>
-          <Input placeholder='Password' type='password' />{' '}
-        </Box>
-        <LoginButton color='white' style={{cursor: 'pointer'}}>
-          <Text mx={23}>LOGIN</Text>
-        </LoginButton>
-      </Flex>
-    </div>
+    <Flex>
+      <Sidebar profilePicture='https://randomuser.me/api/portraits/men/11.jpg' />
+      <Box mx={200}>
+        <Login />
+      </Box>
+    </Flex>
   )
 }
 
