@@ -8,11 +8,7 @@ type Props = {
   className?: string
 }
 
-const IconStyle = styled.svg`
-  & use {
-    //fill: ${(props) => props.theme.colors.icon} ; commented
-  }
-`
+const IconStyle = styled.svg``
 
 const IconComponent: FC<Props> = forwardRef(
   ({ svg, color = '#000', className, ...props }, ref: Ref<SVGSVGElement>) => (

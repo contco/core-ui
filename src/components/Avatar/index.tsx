@@ -9,6 +9,7 @@ type Props = {
   title?: string
   color?: string
   active?: boolean
+  name?: string
 }
 
 const HoverContainer = styled(Box)`
@@ -52,8 +53,13 @@ const Avatar: React.FC<Props> = ({
   size = 'sm',
   title = '',
   color = '',
+  name = 'John Doe',
   active
 }) => {
+  const nameSplit = name.split(' ')
+  const initials =
+    nameSplit[0].charAt(0).toUpperCase() + nameSplit[1].charAt(0).toUpperCase()
+
   if (size === 'md') {
     return (
       <Wrapper>
@@ -64,8 +70,14 @@ const Avatar: React.FC<Props> = ({
             height={50}
             width={50}
             active={active}
+            bg='orange'
             color={color}
-          />
+            alignItems='center'
+          >
+            <Flex justifyContent='center' mt={15}>
+              {initials}
+            </Flex>
+          </AvatarComponent>
         )}
         {title ? (
           <HoverContainer>
@@ -87,9 +99,14 @@ const Avatar: React.FC<Props> = ({
             height={50}
             width={50}
             m={15}
+            bg='orange'
             active={active}
             color={color}
-          />
+          >
+            <Flex justifyContent='center' mt={15}>
+              {initials}
+            </Flex>
+          </AvatarComponent>
         )}
         {title ? (
           <HoverContainer>
@@ -107,7 +124,17 @@ const Avatar: React.FC<Props> = ({
         {image ? (
           <AvatarComponent height={20} width={20} as='img' src={image} />
         ) : (
-          <AvatarComponent active={active} color={color} />
+          <AvatarComponent
+            height={20}
+            width={20}
+            active={active}
+            color={color}
+            bg='orange'
+          >
+            <Flex justifyContent='center' mt={1} style={{ fontSize: '8px' }}>
+              {initials}
+            </Flex>
+          </AvatarComponent>
         )}
         {title ? (
           <HoverContainer>

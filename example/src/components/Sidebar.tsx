@@ -1,13 +1,13 @@
 import React from 'react'
-import { Flex, Avatar, Button } from '@contco/core-ui'
-// import { Icon } from '@contco/core-ui'
-// import SunIcon from '../dark-light-mode-icon.svg'
+import { Flex, Avatar, Button, Icon } from '@contco/core-ui'
+import { ReactComponent as SunIcon } from '../dark-light-mode-icon.svg'
 
 type Props = {
   profilePicture?: string
+  name?: string
 }
 
-const Sidebar: React.FC<Props> = ({ profilePicture }) => {
+const Sidebar: React.FC<Props> = ({ name }) => {
   return (
     <Flex
       bg='left'
@@ -18,10 +18,12 @@ const Sidebar: React.FC<Props> = ({ profilePicture }) => {
       height='100vh'
       width='100px'
     >
-      <Avatar title='manman' image={profilePicture} size='md' />
+      <Avatar title={name} size='md' name={name} color='white' />
       <Flex height='12%' width={1} justifyContent='center' aligItems='center'>
-        <Button bg='grey' height={15} width={5} style={{ borderRadius: '50%' }}>
-          {/* <Icon svg={SunIcon}></Icon> */}
+        <Button bg='white' height={15} width={5} style={{ borderRadius: '50%' }} justifyContent='center'>
+          <Flex alignItems='center'>
+            <Icon svg={SunIcon}></Icon>
+          </Flex>
         </Button>
       </Flex>
     </Flex>
