@@ -8,7 +8,7 @@ import {
   SpaceProps,
   LayoutProps
 } from 'styled-system'
-import { Box } from '..'
+import Box from '../layout/Box'
 
 type TextProps = ColorProps & SpaceProps & LayoutProps & TypographyProps
 

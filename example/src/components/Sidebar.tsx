@@ -20,7 +20,13 @@ const Sidebar: React.FC<Props> = ({ name }) => {
     >
       <Avatar title={name} size='md' name={name} color='white' />
       <Flex height='12%' width={1} justifyContent='center' aligItems='center'>
-        <Button bg='white' height={15} width={5} style={{ borderRadius: '50%' }} justifyContent='center'>
+        <Button
+          bg='white'
+          height={15}
+          width={5}
+          style={{ borderRadius: '50%', border: '1px solid black' }}
+          justifyContent='center'
+        >
           <Flex alignItems='center'>
             <Icon svg={SunIcon}></Icon>
           </Flex>
