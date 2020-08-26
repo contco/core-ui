@@ -57,8 +57,14 @@ const Avatar: React.FC<Props> = ({
   active
 }) => {
   const nameSplit = name.split(' ')
-  const initials =
-    nameSplit[0].charAt(0).toUpperCase() + nameSplit[1].charAt(0).toUpperCase()
+  let initials = ''
+  if (nameSplit.length === 1) {
+    initials = nameSplit[0].charAt(0).toUpperCase()
+  } else {
+    initials =
+      nameSplit[0].charAt(0).toUpperCase() +
+      nameSplit[nameSplit.length - 1].charAt(0).toUpperCase()
+  }
 
   if (size === 'md') {
     return (
