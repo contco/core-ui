@@ -14,10 +14,7 @@ const Button: FC<any> = forwardRef(
     <Flex
       ref={ref}
       as='a'
-      px='22px'
-      py='16px'
-      width='100px'
-      height='20px'
+      p={12}
       bg='#050b21'
       justifyContent='space-between'
       {...props}

@@ -15,11 +15,3 @@ const Input: FC<any> = forwardRef((props: any, ref: Ref<HTMLDivElement>) => (
 ))
 
 export default Input
-
-// const Input1 = styled.input`
-//   height: 50px;
-//   width: 300px;
-//   background-color: white;
-//   margin: 20px;
-//   border: none;
-// `
