@@ -1,24 +1,20 @@
-import React from "react";
-import {
-  Box,
-  Flex,
-  Text,
-  OvalButton,
-  Input,
-} from "@contco/core-ui";
-import { ReactComponent as Sun } from "./dark-light-mode-icon.svg";
-import "@contco/core-ui/dist/index.css";
+import React from 'react'
+import Login from './components/Login'
+import { Flex, Box } from '@contco/core-ui'
+import Sidebar from './components/Sidebar'
 
 const App = () => {
   return (
-    <>
-      <Box m={50}>Hello</Box>
-      <Flex p={30}>World</Flex>
-      <Text color={"red"}>Welcome to this library</Text>
-      <OvalButton Icon={Sun}></OvalButton>
-      <Input placeholder="First Name"></Input>
-    </>
-  );
-};
+    <Flex>
+      <Sidebar
+        name='hello this world'
+        profilePicture='https://randomuser.me/api/portraits/men/11.jpg'
+      />
+      <Box mx={200}>
+        <Login />
+      </Box>
+    </Flex>
+  )
+}
 
-export default App;
+export default App

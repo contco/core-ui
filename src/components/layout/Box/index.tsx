@@ -1,15 +1,16 @@
-import React, { FC } from "react";
-import styled from "styled-components";
+/* eslint-disable no-unused-vars */
+import React, { forwardRef, Ref } from 'react'
+import styled from 'styled-components'
 import {
   color,
   ColorProps,
   space,
   SpaceProps,
   layout,
-  LayoutProps,
-} from "styled-system";
+  LayoutProps
+} from 'styled-system'
 
-type BoxProps = ColorProps & SpaceProps & LayoutProps;
+type BoxProps = ColorProps & SpaceProps & LayoutProps
 
 const Box = styled.div<BoxProps>`
   box-sizing: border-box;
@@ -17,10 +18,10 @@ const Box = styled.div<BoxProps>`
   ${space};
   ${color};
   ${layout};
-`;
+`
 
-const BoxComponent: FC<any> = (props) => {
-  return <Box {...props} />;
-};
+const BoxComponent = forwardRef((props: any, ref: Ref<HTMLDivElement>) => (
+  <Box ref={ref} {...props} />
+))
 
-export default BoxComponent;
+export default BoxComponent

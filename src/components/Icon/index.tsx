@@ -1,22 +1,25 @@
-import React, { FC, SVGProps } from "react";
-import styled from "styled-components";
-
+/* eslint-disable no-unused-vars */
+import React, { FC, SVGProps, forwardRef, Ref } from 'react'
+import styled from 'styled-components'
 
 type Props = {
-  svg: FC<SVGProps<SVGSVGElement>>;
-  color?: string;
-  className?: string;
-};
-
-const IconStyle = styled.svg`
-  & use {
-    //fill: ${props => props.theme.colors.icon} ;
-  }
-`;
-
-const IconComponent: FC<Props> = ({ svg, color = "#000", className }) => {
-  return <IconStyle as={svg} color={color} className={className} />;
+  svg: FC<SVGProps<SVGSVGElement>>
+  color?: string
+  className?: string
 }
 
+const IconStyle = styled.svg``
 
-export default IconComponent;
+const IconComponent: FC<Props> = forwardRef(
+  ({ svg, color = '#000', className, ...props }, ref: Ref<SVGSVGElement>) => (
+    <IconStyle
+      ref={ref}
+      as={svg}
+      color={color}
+      className={className}
+      {...props}
+    />
+  )
+)
+
+export default IconComponent
