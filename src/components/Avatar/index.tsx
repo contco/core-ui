@@ -1,33 +1,38 @@
-import React from 'react'
+import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
 import styled from 'styled-components'
 import Box from '../layout/Box'
 import Flex from '../layout/Flex'
+import Text from "../Text/index";
+import randomColors from './colors';
 
-type Props = {
-  image?: string
-  size?: string
-  title?: string
-  color?: string
-  active?: boolean
-  name?: string
-}
+type HoverProps = {
+  width: number
+};
 
-const HoverContainer = styled(Box)`
+const HoverContainer = styled(Box) <HoverProps>`
+  z-index: 1;
   position: absolute;
-  width: max-content;
-  margin-top: 20px;
-  display: none;
-`
+  min-width: ;
+  width: ${(props) => props.width}px;
+  visibility: hidden;
+  top: 100%;
+  left: 50%;
+  margin-left: -${(props) => props.width / 2}px;
+`;
 
 const Rectangle = styled(Flex)`
-  padding: 0px 5px;
+  width: max-content;
+  min-width: 10px;
+  text-align: center;
+  padding: 3px 5px;
   height: 20px;
-  border-radius: 2px;
+	border-radius: 2px;
   background-color: #050b21;
   font-size: 8px;
   letter-spacing: 0.33px;
-  color: #ffffff !important;
+  color: #ffffff ;
   align-items: center;
+  justify-content: center;
 `
 
 const Triangle = styled(Box)`
@@ -36,123 +41,127 @@ const Triangle = styled(Box)`
   border: solid 8px;
   border-color: transparent transparent #050b21 transparent;
   margin: 0 auto;
-`
+`;
 
-const Wrapper = styled(Flex)`
+const Wrapper = styled(Box)`
   &:hover ${HoverContainer} {
-    display: initial;
+    visibility: visible;
+  }
+  position: relative;
+`;
+
+const AvatarComponent = styled(Flex) <any>`
+  border-radius: 50%;
+  border: ${(props) => (props.active ? '1px solid #3498db;' : 'none;')}
+  height: 20px;
+  width: 20px;
+  &.lg {
+    height: 70px;
+    width: 70px;
+  }
+  &.md {
+    height: 50px;
+    width: 50px;
   }
 `
-const AvatarComponent = styled(Box)<any>`
-  border-radius: 50%;
-  border: ${(props) => (props.active ? '1px solid #3498db;' : 'none;')};
+const NameText = styled(Text)`
+  font-size: 9px;
+  &.md {
+    font-size: 16px;
+  }
+  &.lg {
+  font-size: 25px;
+  }
 `
+
+
+type Props = {
+  image?: string
+  size?: string
+  title?: string
+  color?: string
+  active?: boolean
+  name?: string
+};
+
 
 const Avatar: React.FC<Props> = ({
   image = '',
   size = 'sm',
   title = '',
   color = '',
-  name = 'John Doe',
+  name,
   active
 }) => {
-  const nameSplit = name.split(' ')
-  let initials = ''
-  if (nameSplit.length === 1) {
-    initials = nameSplit[0].charAt(0).toUpperCase()
-  } else {
-    initials =
-      nameSplit[0].charAt(0).toUpperCase() +
-      nameSplit[nameSplit.length - 1].charAt(0).toUpperCase()
+  const [width, setWidth] = useState<number>(0)
+  const [randomColor, setRandomColor] = useState<string>('#555')
+  const [userName, setUserName] = useState<string>('')
+  const containerRef = useRef<HTMLDivElement>();
+
+  const generateColor = (initials: string): string => {
+    const charIndex = initials.charCodeAt(0) - 65;
+    const colorIndex = charIndex % 19;
+    return randomColors[colorIndex];
+  };
+
+  const generateInitials = (name: string): string => {
+    const nameSplit = name.trim().split(' ');
+    let initials = '';
+    if (nameSplit.length === 1) {
+      initials = nameSplit[0].charAt(0).toUpperCase()
+    } else {
+      initials =
+        nameSplit[0].charAt(0).toUpperCase() +
+        nameSplit[nameSplit.length - 1].charAt(0).toUpperCase()
+    }
+    return initials;
   }
 
-  if (size === 'md') {
-    return (
+  useEffect(() => {
+    if (name) {
+      const initials = generateInitials(name);
+      const initialsColor = generateColor(initials);
+      setRandomColor(initialsColor);
+      setUserName(initials);
+    }
+  }, [name]);
+
+  useLayoutEffect(() => {
+    if (containerRef.current) {
+      if (width !== containerRef.current.scrollWidth) {
+        setWidth(containerRef.current.scrollWidth);
+      }
+    }
+  });
+
+
+  return (
+    <Box>
       <Wrapper>
-        {image ? (
-          <AvatarComponent height={50} width={50} as='img' src={image} />
-        ) : (
-          <AvatarComponent
-            height={50}
-            width={50}
-            active={active}
-            bg='orange'
-            color={color}
-            alignItems='center'
-          >
-            <Flex justifyContent='center' mt={15}>
-              {initials}
-            </Flex>
-          </AvatarComponent>
-        )}
+        {image ?
+          <AvatarComponent active={active} className={size} as='img' alt="avatar" src={image} />
+          : (
+            <AvatarComponent
+              className={size}
+              active={active}
+              bg={name ? randomColor : color}
+              alignItems='center'
+              justifyContent="center"
+            >
+              {userName !== "" ?
+                <NameText className={size} color="#fff" fontWeight="bold">{userName}</NameText>
+                : null}
+            </AvatarComponent>
+          )}
         {title ? (
-          <HoverContainer>
+          <HoverContainer width={width} key={title}>
             <Triangle />
-            <Rectangle>{title}</Rectangle>
+            <Rectangle ref={containerRef}>{title}</Rectangle>
           </HoverContainer>
-        ) : (
-          ''
-        )}
+        ) : null}
       </Wrapper>
-    )
-  } else if (size === 'mm') {
-    return (
-      <Wrapper>
-        {image ? (
-          <AvatarComponent height={50} width={50} m={15} as='img' src={image} />
-        ) : (
-          <AvatarComponent
-            height={50}
-            width={50}
-            m={15}
-            bg='orange'
-            active={active}
-            color={color}
-          >
-            <Flex justifyContent='center' mt={15}>
-              {initials}
-            </Flex>
-          </AvatarComponent>
-        )}
-        {title ? (
-          <HoverContainer>
-            <Triangle />
-            <Rectangle>{title}</Rectangle>
-          </HoverContainer>
-        ) : (
-          ''
-        )}
-      </Wrapper>
-    )
-  } else {
-    return (
-      <Wrapper>
-        {image ? (
-          <AvatarComponent height={20} width={20} as='img' src={image} />
-        ) : (
-          <AvatarComponent
-            height={20}
-            width={20}
-            active={active}
-            color={color}
-            bg='orange'
-          >
-            <Flex justifyContent='center' mt={1} style={{ fontSize: '8px' }}>
-              {initials}
-            </Flex>
-          </AvatarComponent>
-        )}
-        {title ? (
-          <HoverContainer>
-            <Triangle />
-            <Rectangle>{title}</Rectangle>
-          </HoverContainer>
-        ) : (
-          ''
-        )}
-      </Wrapper>
-    )
-  }
+    </Box>
+  )
 }
 
 export default Avatar
