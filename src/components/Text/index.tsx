@@ -17,7 +17,15 @@ const Text = styled(Box)<TextProps>`
 `
 
 const TextComponent: FC<any> = forwardRef(
-  (props: any, ref: Ref<HTMLDivElement>) => <Text {...props} ref={ref} />
+  (props: any, ref: Ref<HTMLDivElement>) => (
+    <Text
+      color={(theme: { colors: { text: String } }) =>
+        theme.colors !== undefined ? theme.colors.text : '#050b21'
+      }
+      {...props}
+      ref={ref}
+    />
+  )
 )
 
 export default TextComponent

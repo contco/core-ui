@@ -15,7 +15,9 @@ const Button: FC<any> = forwardRef(
       ref={ref}
       as='a'
       p={12}
-      bg='#050b21'
+      bg={(theme: { colors: { text: String } }) =>
+        theme.colors !== undefined ? theme.colors.text : '#050b21'
+      }
       justifyContent='space-between'
       {...props}
     >
