@@ -2,23 +2,22 @@
 import React, { FC, forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { color, ColorProps, typography, TypographyProps } from 'styled-system'
+import Box from '../layout/Box'
 
 type HeadingProps = ColorProps & TypographyProps
 
-const Heading = styled.div<HeadingProps>`
+const Heading = styled(Box)<HeadingProps>`
   ${color};
   ${typography};
-  as='p'
-  {...props}
+  color: ${({ theme }) =>
+    theme.colors !== undefined ? theme.colors.text : '#050b21'};
 `
 
 const HeadingComponent: FC<any> = forwardRef(
   (props: any, ref: Ref<HTMLDivElement>) => (
     <Heading
       ref={ref}
-      color={(theme: { colors: { text: String } }) =>
-        theme.colors !== undefined ? theme.colors.text : '#050b21'
-      }
+      as='p'
       fontSize='36px'
       fontWeight='bold'
       textAlign='justify'
