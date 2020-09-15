@@ -9,8 +9,6 @@ type HeadingProps = ColorProps & TypographyProps
 const Heading = styled(Box)<HeadingProps>`
   ${color};
   ${typography};
-  color: ${({ theme }) =>
-    theme.colors !== undefined ? theme.colors.text : '#050b21'};
 `
 
 const HeadingComponent: FC<any> = forwardRef(

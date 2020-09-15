@@ -1,4 +1,4 @@
-# @contco/core-ui
+# Contco Core-UI
 
 > core ui elements
 
@@ -7,21 +7,20 @@
 ## Install
 
 ```bash
-npm install --save @contco/core-ui
+yarn add @contco/core-ui
 ```
 
 ## Usage
 
 ```tsx
-import React, { Component } from 'react'
+import { Flex, Button } from '@contco/core-ui'
 
-import MyComponent from '@contco/core-ui'
-import '@contco/core-ui/dist/index.css'
-
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
+const Example = (props) => {
+  return (
+    <Flex>
+      <Button p={2} color='white' />
+    </Flex>
+  )
 }
 ```
 
