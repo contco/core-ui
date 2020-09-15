@@ -1,13 +1,14 @@
 <h1 align="center">Contco Core-UI</h1>
 
-> core ui elements
-
 <div align="center">
+
+> core ui elements
 
 [![NPM](https://img.shields.io/npm/v/@contco/core-ui.svg)](https://www.npmjs.com/package/@contco/core-ui) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 </div>
-## Install
+
+## Installation
 
 ```bash
 // with npm
@@ -18,6 +19,8 @@ yarn add @contco/core-ui
 ```
 
 ## Usage
+
+Here is a quick example to get you started, **it's all you need**:
 
 ```tsx
 import { Flex, Button } from '@contco/core-ui'
