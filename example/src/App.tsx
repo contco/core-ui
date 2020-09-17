@@ -4,7 +4,7 @@ import { Flex, Box, Avatar, Text , Modal , Button} from '@contco/core-ui'
 import Sidebar from './components/Sidebar'
 
 const App = () => {
-  const [isClosed, setIsClosed] = useState(true)
+  const [isClosed, setIsClosed] = useState(false)
   return (
     <Flex>
       <Sidebar
@@ -65,8 +65,40 @@ const App = () => {
           <Text mx={23}>OPEN MODAL</Text>
         </Button>
       </Box>
-      <Modal  isClosed={isClosed}>
+      <Modal  isOpen={isClosed} onClose={setIsClosed}>
         <>
+        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
         <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
         <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
         </>
