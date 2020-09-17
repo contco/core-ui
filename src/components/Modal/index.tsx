@@ -35,7 +35,7 @@ const Modal: React.FC<Props> = ({ isOpen , children , onClose }) => {
     
     return (
       <Container justifyContent="center" display={!isOpen ? "none" : "flex"} onClick={()=>{onClose(!isOpen)}}>
-        <Content maxHeight="600px" maxWidth="800px" onClick={()=>{onClose(false)}}>
+        <Content maxHeight="600px" maxWidth="800px" onClick={()=>{onClose(isOpen)}}>
           {children}
         </Content>
       </Container>
