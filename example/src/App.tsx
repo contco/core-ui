@@ -1,10 +1,10 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import Login from './components/Login'
-import { Flex, Box, Avatar, Text , Modal , Button} from '@contco/core-ui'
+import { Flex, Box, Avatar, Text, Modal, Button } from '@contco/core-ui'
 import Sidebar from './components/Sidebar'
 
 const App = () => {
-  const [isClosed, setIsClosed] = useState(false)
+  const [isClosed, setIsClosed] = useState(false);
   return (
     <Flex>
       <Sidebar
@@ -61,46 +61,46 @@ const App = () => {
             title="Fahad Mahmood"
           />
         </Flex>
-        <Button onClick={()=>{setIsClosed(!isClosed)}} color={"white"}>
+        <Button onClick={() => { setIsClosed(!isClosed) }} color={"white"}>
           <Text mx={23}>OPEN MODAL</Text>
         </Button>
       </Box>
-      <Modal  isOpen={isClosed} onClose={setIsClosed}>
+      <Modal isOpen={isClosed} onClose={setIsClosed}>
         <>
-        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
-        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
-        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
-        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
-        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
-        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
-        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
-        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
-        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
-        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
-        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
-        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
-        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
-        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
-        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
-        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
-        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
-        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
-        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
-        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
-        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
-        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
-        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
-        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
-        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
-        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
-        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
-        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
-        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
-        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
-        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
-        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
-        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
-        <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+          <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+          <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+          <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+          <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+          <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+          <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+          <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+          <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+          <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+          <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+          <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+          <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+          <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+          <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+          <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+          <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+          <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+          <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+          <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+          <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+          <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+          <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+          <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+          <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+          <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+          <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+          <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+          <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+          <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+          <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+          <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+          <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+          <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
+          <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
         </>
       </Modal>
     </Flex>
