@@ -2,7 +2,7 @@
 
 <div align="center">
 
-> core ui elements
+Core UI elements for faster and simpler web development
 
 [![NPM](https://img.shields.io/npm/v/@contco/core-ui.svg)](https://www.npmjs.com/package/@contco/core-ui) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
