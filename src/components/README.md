@@ -6,7 +6,7 @@
 import { Avatar, Button, Heading, Modal } from '@contco/core-ui'
 ```
 
-## Avatar
+1. ### Avatar
 
 ### Props
 
@@ -30,7 +30,7 @@ import { Avatar, Button, Heading, Modal } from '@contco/core-ui'
 />
 ```
 
-## Button
+2. ## Button
 
 ### Usage
 
@@ -48,7 +48,7 @@ import { Avatar, Button, Heading, Modal } from '@contco/core-ui'
 </Heading>
 ```
 
-## Icon
+3. ## Icon
 
 ### Props
 
@@ -61,7 +61,7 @@ import { Avatar, Button, Heading, Modal } from '@contco/core-ui'
 <Icon svg={SunIcon} />
 ```
 
-## Input
+4. ## Input
 
 ### Usage
 
@@ -69,12 +69,12 @@ import { Avatar, Button, Heading, Modal } from '@contco/core-ui'
 <Icon svg={SunIcon} />
 ```
 
-## Box
+5. ## Box
 
-## Flex
+6. ## Flex
 
-## Image
+7. ## Image
 
-## Modal
+8. ## Modal
 
-## Text
+9. ## Text
