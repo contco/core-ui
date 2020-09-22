@@ -71,10 +71,49 @@ import { Avatar, Button, Heading, Modal } from '@contco/core-ui'
 
 ## 6. Box
 
+### Usage
+
+```tsx
+<Box mb={3} p={2} bg='yellow'>
+  <Input placeholder='Username' />
+</Box>
+```
+
 ## 7. Flex
 
-## 8. Image
+### Usage
 
-## 9. Modal
+```tsx
+<Flex mb={3} p={2} bg='yellow'>
+  <Input placeholder='Username' />
+</Flex>
+```
 
-## 10. Text
+## 8. Modal
+
+### Props
+
+- `isOpen`: Boolean value for showing the modal on the screen.
+- `onClose`: Evokes a function when the modal is closed.
+
+### Usage
+
+```tsx
+<Modal isOpen={isClosed} onClose={setIsClosed}>
+  <>
+    <Text fontSize={30} fontWeight='bold' textAlign='center'>
+      Modal Text
+    </Text>
+  </>
+</Modal>
+```
+
+## 9. Text
+
+### Usage
+
+```tsx
+<Text fontSize={25} fontWeight='bold' textAlign='center'>
+  This is a text
+</Text>
+```
