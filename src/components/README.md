@@ -35,7 +35,7 @@ import { Avatar, Button, Heading, Modal } from '@contco/core-ui'
 ### Usage
 
 ```tsx
-  <Button color='white' p={2} m={5} bg="black">
+<Button color='white' p={2} m={5} bg="black">
 ```
 
 ## 3. Heading
@@ -66,7 +66,7 @@ import { Avatar, Button, Heading, Modal } from '@contco/core-ui'
 ### Usage
 
 ```tsx
-<Icon svg={SunIcon} />
+<Input placeholder='username' p={3} mb={3} />
 ```
 
 ## 6. Box
