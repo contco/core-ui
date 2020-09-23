@@ -66,7 +66,7 @@ const App = () => {
         </Button>
       </Box>
       <Modal isOpen={isClosed} onClose={setIsClosed}>
-        <>
+        <Box p="20px" minWidth="400px">
           <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
           <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
           <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
@@ -101,7 +101,7 @@ const App = () => {
           <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
           <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
           <Text fontSize={25} fontWeight="bold" textAlign="center">Avatars </Text>
-        </>
+        </Box>
       </Modal>
     </Flex>
   )

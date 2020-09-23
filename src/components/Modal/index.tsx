@@ -16,7 +16,6 @@ background-color: rgba(0,0,0,0.4);
 const Content = styled(Box)`
 background-color: white;
 margin: auto;
-padding: 20px;
 border-radius: 20px;
 overflow-y: auto;
 &::-webkit-scrollbar {
@@ -46,10 +45,10 @@ const Modal: React.FC<Props> = ({ isOpen, children, onClose }) => {
   };
   return (
     <Container justifyContent="center" display={!isOpen ? "none" : "flex"} onClick={handleClick}>
-      <Content ref={containerRef} maxHeight="80vh" maxWidth="80vw" minWidth="400px">
+      <Content ref={containerRef} maxHeight="80vh" maxWidth="80vw">
         {children}
       </Content>
-    </Container>
+    </Container >
   )
 }
 
