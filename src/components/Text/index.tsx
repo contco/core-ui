@@ -14,8 +14,6 @@ type TextProps = ColorProps & SpaceProps & LayoutProps & TypographyProps
 
 const Text = styled(Box)<TextProps>`
   ${typography};
-  color: ${({ theme }) =>
-    theme.colors !== undefined ? theme.colors.text : '#050b21'}}
 `
 
 const TextComponent: FC<any> = forwardRef(
