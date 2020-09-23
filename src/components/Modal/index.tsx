@@ -45,7 +45,7 @@ const Modal: React.FC<Props> = ({ isOpen, children, onClose }) => {
   };
   return (
     <Container justifyContent="center" display={!isOpen ? "none" : "flex"} onClick={handleClick}>
-      <Content ref={containerRef} maxHeight="80vh" maxWidth="80vw">
+      <Content ref={containerRef}>
         {children}
       </Content>
     </Container >
