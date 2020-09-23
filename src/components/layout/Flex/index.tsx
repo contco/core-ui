@@ -9,10 +9,12 @@ import {
   layout,
   LayoutProps,
   flexbox,
-  FlexProps
+  FlexProps,
+  position,
+  PositionProps 
 } from 'styled-system'
 
-type FlexBoxProps = ColorProps & SpaceProps & LayoutProps & FlexProps
+type FlexBoxProps = ColorProps & SpaceProps & LayoutProps & FlexProps & PositionProps;
 
 const Flex = styled.div<FlexBoxProps>`
   boxsizing: 'border-box';
@@ -22,6 +24,7 @@ const Flex = styled.div<FlexBoxProps>`
   ${space};
   ${layout};
   ${flexbox};
+  ${position};
 `
 
 const FlexComponent = forwardRef((props: any, ref: Ref<HTMLDivElement>) => (
