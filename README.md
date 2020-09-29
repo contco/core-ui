@@ -1,27 +1,36 @@
-# @contco/core-ui
+<h1 align="center">Contco Core-UI</h1>
 
-> core ui elements
+<div align="center">
+
+Core UI elements for faster and simpler web development
 
 [![NPM](https://img.shields.io/npm/v/@contco/core-ui.svg)](https://www.npmjs.com/package/@contco/core-ui) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-## Install
+</div>
+
+## Installation
 
 ```bash
-npm install --save @contco/core-ui
+// with npm
+npm install @contco/core-ui
+
+// with yarn
+yarn add @contco/core-ui
 ```
 
 ## Usage
 
+Here is a quick example to get you started, **it's all you need**:
+
 ```tsx
-import React, { Component } from 'react'
+import { Flex, Button } from '@contco/core-ui'
 
-import MyComponent from '@contco/core-ui'
-import '@contco/core-ui/dist/index.css'
-
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
+const Example = (props) => {
+  return (
+    <Flex>
+      <Button p={2} color='white' />
+    </Flex>
+  )
 }
 ```
 

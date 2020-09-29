@@ -1,6 +1,8 @@
 {
   "name": "@contco/core-ui",
+
   "version": "1.0.6",
+
   "description": "core ui elements",
   "author": "ammarjussa",
   "license": "ISC",

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Input, Flex, Box, Text } from '@contco/core-ui'
+import { Button, Input, Flex, Box, Text, Heading } from '@contco/core-ui'
 
 const Login = () => {
   return (
@@ -10,9 +10,7 @@ const Login = () => {
         alignItems='center'
         flexDirection='column'
       >
-        <Text mb={4} fontSize={30}>
-          LOGIN PAGE
-        </Text>
+        <Heading mb={4}>LOGIN PAGE</Heading>
         <Box mb={3}>
           <Input placeholder='Username' />
         </Box>
@@ -20,7 +18,9 @@ const Login = () => {
           <Input placeholder='Password' type='password' />{' '}
         </Box>
         <Button color='white' style={{ cursor: 'pointer' }}>
-          <Text mx={23}>LOGIN</Text>
+          <Text mx={23} style={{color: "white"}}>
+            LOGIN
+          </Text>
         </Button>
       </Flex>
     </div>

@@ -1,7 +1,14 @@
-import React, { ReactChild, ReactChildren, MutableRefObject, useEffect } from 'react'
+/* eslint-disable no-unused-vars */
+import React, {
+  ReactChild,
+  ReactChildren,
+  MutableRefObject,
+  useEffect
+} from 'react'
 import Box from '../layout/Box'
 import Flex from '../layout/Flex'
 import styled from 'styled-components'
+
 
 const Container = styled(Flex)`
 position: fixed;
@@ -22,27 +29,28 @@ overflow-y: auto;
   display: none;
 }
 `;
+
 interface Props {
-  isOpen: boolean;
-  children: ReactChild | ReactChildren;
+  isOpen: boolean
+  children: ReactChild | ReactChildren
   onClose: (arg: boolean) => void
 }
 const Modal: React.FC<Props> = ({ isOpen, children, onClose }) => {
-  const containerRef = React.useRef() as MutableRefObject<HTMLDivElement>;
+  const containerRef = React.useRef() as MutableRefObject<HTMLDivElement>
 
   useEffect(() => {
-    document.addEventListener("mousedown", handleClick);
+    document.addEventListener('mousedown', handleClick)
 
     return () => {
-      document.removeEventListener("mousedown", handleClick);
-    };
-  }, []);
+      document.removeEventListener('mousedown', handleClick)
+    }
+  }, [])
 
   const handleClick = (e: React.MouseEvent<HTMLElement> | MouseEvent) => {
     if (!containerRef.current.contains(e.target as Node)) {
-      onClose(false);
+      onClose(false)
     }
-  };
+  }
   return (
     <Container justifyContent="center" display={!isOpen ? "none" : "flex"} onClick={handleClick}>
       <Content ref={containerRef}>
