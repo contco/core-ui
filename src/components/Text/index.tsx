@@ -2,6 +2,7 @@
 import React, { forwardRef, Ref, FC } from 'react'
 import styled from 'styled-components'
 import {
+  color,
   ColorProps,
   typography,
   TypographyProps,
@@ -13,6 +14,7 @@ import Box from '../layout/Box'
 type TextProps = ColorProps & SpaceProps & LayoutProps & TypographyProps
 
 const Text = styled(Box)<TextProps>`
+  ${color};
   ${typography};
 `
 
