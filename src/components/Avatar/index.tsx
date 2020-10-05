@@ -1,6 +1,5 @@
-import React, { useState, useRef, useLayoutEffect } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import styled from "styled-components";
-import Box from '../layout/Box'
 type Props = {
   image?: string;
   size?: string;
@@ -12,8 +11,13 @@ type Props = {
 type AvatarProps = {
   active?: boolean;
 };
+type HoverProps = {
+  width?: number;
+};
 
-const HoverContainer = styled(Box)`
+
+
+const HoverContainer = styled.div<HoverProps>`
   z-index: 1;
   position: absolute;
   min-width: ;
@@ -21,7 +25,7 @@ const HoverContainer = styled(Box)`
   visibility: hidden;
   top: 100%;
   left: 50%;
-  margin-left: -${props => props.width / 2}px;
+  margin-left: -${props => props.width && props.width/2}px;
 `;
 const Triangle = styled.div`
   width: 0;
@@ -31,7 +35,7 @@ const Triangle = styled.div`
   margin: 0 auto;
 `;
 
-const Rectangle = styled(Box)`
+const Rectangle = styled.div`
   width: max-content;
   min-width: 10px;
   text-align:center;
@@ -47,7 +51,7 @@ const Rectangle = styled(Box)`
   display: flex;
 `;
 
-const Wrapper = styled(Box)`
+const Wrapper = styled.div`
   &:hover ${HoverContainer} {
     visibility: visible;
   }
@@ -79,10 +83,11 @@ const Avatar: React.FC<Props> = ({
   title = "",
   color = "",
   active,
+  
 }) => {
 
   const [width, setWidth] = useState(0);
-  const containerRef = useRef<HTMLDivElement>();
+  const containerRef = React.useRef<HTMLDivElement | null>(null);
 
   useLayoutEffect(() => {
     if (containerRef.current) {
