@@ -1,23 +1,22 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState, useRef, useLayoutEffect ,useEffect } from "react";
 import styled from "styled-components";
+import Box from '../layout/Box';
+import Flex from '../layout/Flex';
+import Text from "../Text/index";
+
+import randomColors from './colors';
 type Props = {
   image?: string;
   size?: string;
   title?: string;
   color?: string;
   active?: boolean;
-};
-
-type AvatarProps = {
-  active?: boolean;
-};
-type HoverProps = {
-  width?: number;
+  name?: string
 };
 
 
 
-const HoverContainer = styled.div<HoverProps>`
+const HoverContainer = styled(Box)`
   z-index: 1;
   position: absolute;
   min-width: ;
@@ -25,7 +24,7 @@ const HoverContainer = styled.div<HoverProps>`
   visibility: hidden;
   top: 100%;
   left: 50%;
-  margin-left: -${props => props.width && props.width/2}px;
+  margin-left: -${props => props.width / 2}px;
 `;
 const Triangle = styled.div`
   width: 0;
@@ -35,7 +34,7 @@ const Triangle = styled.div`
   margin: 0 auto;
 `;
 
-const Rectangle = styled.div`
+const Rectangle = styled(Box)`
   width: max-content;
   min-width: 10px;
   text-align:center;
@@ -51,43 +50,78 @@ const Rectangle = styled.div`
   display: flex;
 `;
 
-const Wrapper = styled.div`
+const AvatarComponent = styled(Flex) <any>`
+  border-radius: 50%;
+  border: ${(props) => (props.active ? '1px solid #3498db;' : 'none;')}
+  height: 20px;
+  width: 20px;
+  &.lg {
+    height: 70px;
+    width: 70px;
+  }
+  &.md {
+    height: 50px;
+    width: 50px;
+  }
+`
+
+const Wrapper = styled(Box)`
   &:hover ${HoverContainer} {
     visibility: visible;
   }
   position: relative;
   display: flex;
 `;
-const AvatarImage = styled.div<AvatarProps>`
-  border-radius: 50%;
-  border: ${(props) => (props.active ? "1px solid #3498db;" : "none;")};
-`;
-const MediumAvatar = styled(AvatarImage)`
-  height: 50px;
-  width: 50px;
-`;
-const SmallAvatar = styled(AvatarImage)`
-  height: 20px;
-  width: 20px;
-  background: ${(props) => (props.color ? props.color : "none")};
-`;
-const MmAvatar = styled(AvatarImage)`
-  height: 50px;
-  width: 50px;
-  margin: 15px;
-`;
+const NameText = styled(Text)`
+  font-size: 9px;
+  &.md {
+    font-size: 16px;
+  }
+  &.lg {
+  font-size: 25px;
+  }
+`
 
 const Avatar: React.FC<Props> = ({
-  image = "",
-  size = "sm",
-  title = "",
-  color = "",
-  active,
-  
+  image = '',
+  size = 'sm',
+  title = '',
+  color = '',
+  name,
+  active
 }) => {
+  const [width, setWidth] = useState<number>(0)
+  const [randomColor, setRandomColor] = useState<string>('#555')
+  const [userName, setUserName] = useState<string>('')
+  const containerRef = useRef<HTMLDivElement>();
 
-  const [width, setWidth] = useState(0);
-  const containerRef = React.useRef<HTMLDivElement | null>(null);
+  const generateColor = (initials: string): string => {
+    const charIndex = initials.charCodeAt(0) - 65;
+    const colorIndex = charIndex % 19;
+    return randomColors[colorIndex];
+  };
+
+  const generateInitials = (name: string): string => {
+    const nameSplit = name.trim().split(' ');
+    let initials = '';
+    if (nameSplit.length === 1) {
+      initials = nameSplit[0].charAt(0).toUpperCase()
+    } else {
+      initials =
+        nameSplit[0].charAt(0).toUpperCase() +
+        nameSplit[nameSplit.length - 1].charAt(0).toUpperCase()
+    }
+    return initials;
+  }
+
+  useEffect(() => {
+    if (name) {
+      const initials = generateInitials(name);
+      const initialsColor = generateColor(initials);
+      setRandomColor(initialsColor);
+      setUserName(initials);
+    }
+  }, [name]);
 
   useLayoutEffect(() => {
     if (containerRef.current) {
@@ -97,59 +131,34 @@ const Avatar: React.FC<Props> = ({
     }
   });
 
-  if (size === "md") {
-    return (
-      <Wrapper >
-        {image ? (
-          <MediumAvatar active={active} as="img" src={image} />
-        ) : (
-            <MediumAvatar active={active} color={color} />
-          )}
-        {title ? (
-          <HoverContainer>
-            <Triangle></Triangle>
-            <Rectangle>{title}</Rectangle>
-          </HoverContainer>
-        ) : (
-            ""
-          )}
-      </Wrapper>
-    );
-  } else if (size === "mm") {
-    return (
-      <Wrapper>
-        {image ? (
-          <MmAvatar active={active} as="img" src={image} />
-        ) : (
-            <MmAvatar active={active} color={color} />
-          )}
-        {title ? (
-          <HoverContainer>
-            <Triangle></Triangle>
-            <Rectangle>{title}</Rectangle>
-          </HoverContainer>
-        ) : (
-            ""
-          )}
-      </Wrapper>
-    );
-  } else {
-    return (
+
+  return (
+    <Box>
       <Wrapper>
         {image ?
-          <SmallAvatar active={active} as="img" src={image} />
-          :
-          <SmallAvatar active={active} color={color} />
-        }
+          <AvatarComponent active={active} className={size} as='img' alt="avatar" src={image} />
+          : (
+            <AvatarComponent
+              className={size}
+              active={active}
+              bg={name ? randomColor : color}
+              alignItems='center'
+              justifyContent="center"
+            >
+              {userName !== "" ?
+                <NameText className={size} color="#fff" fontWeight="bold">{userName}</NameText>
+                : null}
+            </AvatarComponent>
+          )}
         {title ? (
           <HoverContainer width={width} key={title}>
-            <Triangle></Triangle>
+            <Triangle />
             <Rectangle ref={containerRef}>{title}</Rectangle>
           </HoverContainer>
         ) : null}
       </Wrapper>
-    );
-  }
-};
+    </Box>
+  )
+}
 
-export default Avatar;
+export default Avatar
