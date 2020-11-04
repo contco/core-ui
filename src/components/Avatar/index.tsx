@@ -12,6 +12,8 @@ type Props = {
   color?: string;
   active?: boolean;
   name?: string
+  IconWidth?:number;
+  IconHeight?:number;
 };
 
 
@@ -53,8 +55,9 @@ const Rectangle = styled(Box)`
 const AvatarComponent = styled(Flex) <any>`
   border-radius: 50%;
   border: ${(props) => (props.active ? '1px solid #3498db;' : 'none;')}
-  height: 20px;
-  width: 20px;
+  height: ${props => (props.IconHeight?props.IconHeight:20)}px;
+  width: ${props => (props.IconWidth?props.IconWidth:20)}px;
+  ${props => !props.IconHeight && !props.IconWidth && `
   &.lg {
     height: 70px;
     width: 70px;
@@ -63,6 +66,8 @@ const AvatarComponent = styled(Flex) <any>`
     height: 50px;
     width: 50px;
   }
+  `}
+
 `
 
 const Wrapper = styled(Box)`
@@ -88,7 +93,9 @@ const Avatar: React.FC<Props> = ({
   title = '',
   color = '',
   name,
-  active
+  active,
+  IconWidth,
+  IconHeight,
 }) => {
   const [width, setWidth] = useState<number>(0)
   const [randomColor, setRandomColor] = useState<string>('#555')
@@ -136,7 +143,7 @@ const Avatar: React.FC<Props> = ({
     <Box>
       <Wrapper>
         {image ?
-          <AvatarComponent active={active} className={size} as='img' alt="avatar" src={image} />
+          <AvatarComponent active={active} className={size} as='img' alt="avatar" src={image} IconWidth={IconWidth} IconHeight={IconHeight}/>
           : (
             <AvatarComponent
               className={size}
@@ -144,6 +151,8 @@ const Avatar: React.FC<Props> = ({
               bg={name ? randomColor : color}
               alignItems='center'
               justifyContent="center"
+              IconWidth={IconWidth} 
+              IconHeight={IconHeight}
             >
               {userName !== "" ?
                 <NameText className={size} color="#fff" fontWeight="bold">{userName}</NameText>

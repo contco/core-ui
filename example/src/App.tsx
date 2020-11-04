@@ -60,6 +60,16 @@ const App = () => {
             image='https://randomuser.me/api/portraits/men/24.jpg'
             title="Fahad Mahmood"
           />
+          <Avatar
+            title='My Avatar'
+            size='md'
+            name='John Doe'
+            color='white'
+            active
+            IconWidth={40}
+            IconHeight={40}
+            image='https://randomuser.me/api/portraits/men/24.jpg'
+          />
         </Flex>
         <Button onClick={() => { setIsClosed(!isClosed) }} color={"white"}>
           <Text mx={23}>OPEN MODAL</Text>
