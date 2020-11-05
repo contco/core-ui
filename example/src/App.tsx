@@ -61,14 +61,12 @@ const App = () => {
             title="Fahad Mahmood"
           />
           <Avatar
-            title='My Avatar'
-            size='md'
+            title='Custom Size Avatar'
             name='John Doe'
             color='white'
-            active
-            IconWidth={40}
-            IconHeight={40}
-            image='https://randomuser.me/api/portraits/men/24.jpg'
+            width={100}
+            height={100}
+            image='https://randomuser.me/api/portraits/men/29.jpg'
           />
         </Flex>
         <Button onClick={() => { setIsClosed(!isClosed) }} color={"white"}>
