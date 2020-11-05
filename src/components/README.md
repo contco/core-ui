@@ -16,20 +16,19 @@ import { Avatar, Button, Heading, Modal } from '@contco/core-ui'
 - `name`: Name of the avatar. If there is no image, the avatar would show initials of the name
 - `color`: Color of the initials on the avatar
 - `active`
-- `IconWidth`:Custom Icon Width you want to give in numbers instead of particular size, like (IconWidth={40}).
-- `IconHeight`:Custom Icon Height you want to give in numbers instead of particular size, like (Iconheight={40}).
+- `width`:Custom Avatar Width you want to give in numbers instead of particular size, like (width={40}).
+- `height`:Custom Avatar Height you want to give in numbers instead of particular size, like (height={40}).
 ### Usage
 
 ```tsx
 <Avatar
   title='My Avatar'
-  size='md'
   name='John Doe'
   color='white'
   image={imageURL}
   active
-  IconWidth={40}
-  IconHeight={40}
+  width={40}
+  height={40}
 />
 
 
