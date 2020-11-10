@@ -31,6 +31,10 @@ jobs:
           scope: '@contco'
       - run: npm ci
       - run: |
+            git switch -c develop
+            git config user.email ""
+            git config user.name "Publish Action"
+      - run: |
             npm version patch
             git push "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY"
       - run: npm publish
