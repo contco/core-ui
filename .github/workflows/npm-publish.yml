@@ -27,7 +27,6 @@ jobs:
           scope: '@contco'
       - run: npm ci
       - run: |
-            git switch -c develop
             git config user.email ""
             git config user.name "Publish Action"
       - run: |
