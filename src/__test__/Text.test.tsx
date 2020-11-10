@@ -1,4 +1,4 @@
-import  TextComponent  from '../components/Text'
+import TextComponent from '../components/Text'
 
 describe('TextComponent', () => {
   it('is truthy', () => {
