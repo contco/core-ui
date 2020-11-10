@@ -30,6 +30,9 @@ jobs:
           registry-url: https://npm.pkg.github.com/
           scope: '@contco'
       - run: npm ci
+      - run: |
+            npm version patch
+            git push "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY"
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
