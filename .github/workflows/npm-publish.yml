@@ -1,9 +1,6 @@
 name: Node.js Package
 
 on:
-  pull_request:
-    branches:
-    - develop 
   push:
     branches:
     - develop
