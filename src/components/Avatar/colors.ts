@@ -20,4 +20,5 @@ const colors: Array<string> = [
   '#7f8c8d'
 ];
 
+
 export default colors;
