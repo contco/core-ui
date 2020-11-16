@@ -1,8 +1,8 @@
-import React, { forwardRef, Ref } from "react";
-import styled from "styled-components"
-import { layout, LayoutProps,space, SpaceProps, } from "styled-system";
+import React, { forwardRef, Ref } from 'react';
+import styled from 'styled-components';
+import { layout, LayoutProps, space, SpaceProps } from 'styled-system';
 
-type ImageProps =   SpaceProps &LayoutProps;
+type ImageProps = SpaceProps & LayoutProps;
 
 const Image = styled.img<ImageProps>`
   box-sizing: border-box;
@@ -11,9 +11,6 @@ const Image = styled.img<ImageProps>`
   ${layout};
 `;
 
-const ImageComponent = forwardRef((props: any, ref: Ref<HTMLDivElement>) => (
-  <Image ref={ref} {...props} />
-));
-
+const ImageComponent = forwardRef((props: any, ref: Ref<HTMLDivElement>) => <Image ref={ref} {...props} />);
 
 export default ImageComponent;
