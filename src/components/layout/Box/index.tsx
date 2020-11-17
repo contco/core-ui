@@ -1,7 +1,18 @@
-import React, { forwardRef, Ref } from "react";
-import styled from "styled-components"
+import React, { forwardRef, Ref } from 'react';
+import styled from 'styled-components';
 
-import { color, ColorProps, space, SpaceProps, layout, LayoutProps, position, PositionProps, border, BorderProps } from "styled-system";
+import {
+  color,
+  ColorProps,
+  space,
+  SpaceProps,
+  layout,
+  LayoutProps,
+  position,
+  PositionProps,
+  border,
+  BorderProps,
+} from 'styled-system';
 
 type BoxProps = ColorProps & SpaceProps & LayoutProps & PositionProps & BorderProps;
 
@@ -12,12 +23,9 @@ const Box = styled.div<BoxProps>`
   ${color};
   ${layout};
   ${position};
-  ${border}; 
+  ${border};
 `;
 
-const BoxComponent = forwardRef((props: any, ref: Ref<HTMLDivElement>) => (
-  <Box ref={ref} {...props} />
-));
-
+const BoxComponent = forwardRef((props: any, ref: Ref<HTMLDivElement>) => <Box ref={ref} {...props} />);
 
 export default BoxComponent;

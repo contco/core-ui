@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
-import React, { forwardRef, Ref } from 'react'
-import styled from 'styled-components'
+import React, { forwardRef, Ref } from 'react';
+import styled from 'styled-components';
 import {
   color,
   ColorProps,
@@ -11,8 +11,8 @@ import {
   flexbox,
   FlexProps,
   position,
-  PositionProps 
-} from 'styled-system'
+  PositionProps,
+} from 'styled-system';
 
 type FlexBoxProps = ColorProps & SpaceProps & LayoutProps & FlexProps & PositionProps;
 
@@ -25,10 +25,8 @@ const Flex = styled.div<FlexBoxProps>`
   ${layout};
   ${flexbox};
   ${position};
-`
+`;
 
-const FlexComponent = forwardRef((props: any, ref: Ref<HTMLDivElement>) => (
-  <Flex ref={ref} {...props} />
-))
+const FlexComponent = forwardRef((props: any, ref: Ref<HTMLDivElement>) => <Flex ref={ref} {...props} />);
 
-export default FlexComponent
+export default FlexComponent;

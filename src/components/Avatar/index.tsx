@@ -1,20 +1,21 @@
-import React, { useState, useRef, useLayoutEffect, useEffect } from 'react'
-import styled from 'styled-components'
-import Box from '../layout/Box'
-import Flex from '../layout/Flex'
-import Text from '../Text/index'
+import React, { useState, useRef, useLayoutEffect, useEffect } from 'react';
+import styled from 'styled-components';
+import Box from '../layout/Box';
+import Flex from '../layout/Flex';
+import Text from '../Text/index';
 
-import randomColors from './colors'
+import randomColors from './colors';
+
 type Props = {
-  image?: string
-  size?: string
-  title?: string
-  color?: string
-  active?: boolean
-  name?: string
-  width?: number
-  height?: number
-}
+  image?: string;
+  size?: string;
+  title?: string;
+  color?: string;
+  active?: boolean;
+  name?: string;
+  width?: number;
+  height?: number;
+};
 
 const HoverContainer = styled(Box)`
   z-index: 1;
@@ -25,14 +26,14 @@ const HoverContainer = styled(Box)`
   top: 100%;
   left: 50%;
   margin-left: -${(props) => props.width / 2}px;
-`
+`;
 const Triangle = styled.div`
   width: 0;
   height: 0;
   border: solid 8px;
   border-color: transparent transparent #050b21 transparent;
   margin: 0 auto;
-`
+`;
 
 const Rectangle = styled(Box)`
   width: max-content;
@@ -48,7 +49,7 @@ const Rectangle = styled(Box)`
   align-items: center;
   justify-content: center;
   display: flex;
-`
+`;
 
 const AvatarComponent = styled(Flex)<any>`
   border-radius: 50%;
@@ -69,7 +70,7 @@ const AvatarComponent = styled(Flex)<any>`
   }
   `}
 
-`
+`;
 
 const Wrapper = styled(Box)`
   &:hover ${HoverContainer} {
@@ -77,7 +78,7 @@ const Wrapper = styled(Box)`
   }
   position: relative;
   display: flex;
-`
+`;
 const NameText = styled(Text)`
   font-size: 9px;
   &.md {
@@ -86,58 +87,47 @@ const NameText = styled(Text)`
   &.lg {
     font-size: 25px;
   }
-`
+`;
 
-const Avatar: React.FC<Props> = ({
-  image = '',
-  size = 'sm',
-  title = '',
-  color = '',
-  name,
-  active,
-  width,
-  height
-}) => {
-  const [containerWidth, setContainerWidth] = useState<number>(0)
-  const [randomColor, setRandomColor] = useState<string>('#555')
-  const [userName, setUserName] = useState<string>('')
-  const containerRef = useRef<HTMLDivElement>()
+const Avatar: React.FC<Props> = ({ image = '', size = 'sm', title = '', color = '', name, active, width, height }) => {
+  const [containerWidth, setContainerWidth] = useState<number>(0);
+  const [randomColor, setRandomColor] = useState<string>('#555');
+  const [userName, setUserName] = useState<string>('');
+  const containerRef = useRef<HTMLDivElement>();
 
   const generateColor = (initials: string): string => {
-    const charIndex = initials.charCodeAt(0) - 65
-    const colorIndex = charIndex % 19
-    return randomColors[colorIndex]
-  }
+    const charIndex = initials.charCodeAt(0) - 65;
+    const colorIndex = charIndex % 19;
+    return randomColors[colorIndex];
+  };
 
-  const generateInitials = (name: string): string => {
-    const nameSplit = name.trim().split(' ')
-    let initials = ''
+  const generateInitials = (uName: string): string => {
+    const nameSplit = uName.trim().split(' ');
+    let initials = '';
     if (nameSplit.length === 1) {
-      initials = nameSplit[0].charAt(0).toUpperCase()
+      initials = nameSplit[0].charAt(0).toUpperCase();
     } else {
-      initials =
-        nameSplit[0].charAt(0).toUpperCase() +
-        nameSplit[nameSplit.length - 1].charAt(0).toUpperCase()
+      initials = nameSplit[0].charAt(0).toUpperCase() + nameSplit[nameSplit.length - 1].charAt(0).toUpperCase();
     }
-    return initials
-  }
+    return initials;
+  };
 
   useEffect(() => {
     if (name) {
-      const initials = generateInitials(name)
-      const initialsColor = generateColor(initials)
-      setRandomColor(initialsColor)
-      setUserName(initials)
+      const initials = generateInitials(name);
+      const initialsColor = generateColor(initials);
+      setRandomColor(initialsColor);
+      setUserName(initials);
     }
-  }, [name])
+  }, [name]);
 
   useLayoutEffect(() => {
     if (containerRef.current) {
       if (containerWidth !== containerRef.current.scrollWidth) {
-        setContainerWidth(containerRef.current.scrollWidth)
+        setContainerWidth(containerRef.current.scrollWidth);
       }
     }
-  })
+  });
 
   return (
     <Box>
@@ -146,8 +136,8 @@ const Avatar: React.FC<Props> = ({
           <AvatarComponent
             active={active}
             className={size}
-            as='img'
-            alt='avatar'
+            as="img"
+            alt="avatar"
             src={image}
             avatarWidth={width}
             avatarHeight={height}
@@ -157,13 +147,13 @@ const Avatar: React.FC<Props> = ({
             className={size}
             active={active}
             bg={name ? randomColor : color}
-            alignItems='center'
-            justifyContent='center'
+            alignItems="center"
+            justifyContent="center"
             avatarWidth={width}
             avatarHeight={height}
           >
             {userName !== '' ? (
-              <NameText className={size} color='#fff' fontWeight='bold'>
+              <NameText className={size} color="#fff" fontWeight="bold">
                 {userName}
               </NameText>
             ) : null}
@@ -177,7 +167,7 @@ const Avatar: React.FC<Props> = ({
         ) : null}
       </Wrapper>
     </Box>
-  )
-}
+  );
+};
 
-export default Avatar
+export default Avatar;
