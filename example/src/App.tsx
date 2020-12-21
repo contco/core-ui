@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Login from './components/Login';
-import { Flex, Box, Avatar, Text, Modal, Button } from '@contco/core-ui';
+import { Flex, Box, Avatar, Text, Modal, Button, Image, TextArea} from '@contco/core-ui';
 import Sidebar from './components/Sidebar';
 
 const App = () => {
@@ -65,6 +65,8 @@ const App = () => {
         >
           <Text mx={23}>OPEN MODAL</Text>
         </Button>
+        <TextArea />
+      <Image src="https://cdn2.thedogapi.com/images/r16sH664Q.gif" alt="Testing Image"/>
       </Box>
       <Modal isOpen={isClosed} onClose={setIsClosed}>
         <Box p="20px" minWidth="400px">
@@ -172,6 +174,7 @@ const App = () => {
           </Text>
         </Box>
       </Modal>
+
     </Flex>
   );
 };
