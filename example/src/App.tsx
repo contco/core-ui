@@ -65,8 +65,8 @@ const App = () => {
         >
           <Text mx={23}>OPEN MODAL</Text>
         </Button>
-        <TextArea />
-      <Image src="https://cdn2.thedogapi.com/images/r16sH664Q.gif" alt="Testing Image"/>
+        <TextArea height="200px" width="500px"/>
+        <Image height="200px" width="500px" src="https://cdn2.thedogapi.com/images/r16sH664Q.gif" alt="Testing Image"/>
       </Box>
       <Modal isOpen={isClosed} onClose={setIsClosed}>
         <Box p="20px" minWidth="400px">
