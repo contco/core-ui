@@ -9,7 +9,7 @@
 
 ```ts
 
-import { Avatar, Button, Heading, Modal } from  '@contco/core-ui'
+import { Avatar, Button, Heading, Modal, Image, TextArea } from  '@contco/core-ui'
 
 ```
 
