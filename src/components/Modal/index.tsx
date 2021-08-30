@@ -28,8 +28,9 @@ interface Props {
   isOpen: boolean;
   children: ReactChild | ReactChildren;
   onClose: (arg: boolean) => void;
+  className?: string;
 }
-const Modal: React.FC<Props> = ({ isOpen, children, onClose }) => {
+const Modal: React.FC<Props> = ({ className, isOpen, children, onClose }) => {
   const containerRef = React.useRef() as MutableRefObject<HTMLDivElement>;
 
   const handleClick = (e: React.MouseEvent<HTMLElement> | MouseEvent) => {
@@ -48,7 +49,9 @@ const Modal: React.FC<Props> = ({ isOpen, children, onClose }) => {
 
   return (
     <Container justifyContent="center" display={!isOpen ? 'none' : 'flex'} onClick={handleClick}>
-      <Content ref={containerRef}>{children}</Content>
+      <Content className={className} ref={containerRef}>
+        {children}
+      </Content>
     </Container>
   );
 };

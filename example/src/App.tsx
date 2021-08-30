@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import Login from './components/Login';
-import { Flex, Box, Avatar, Text, Modal, Button, Image, TextArea} from '@contco/core-ui';
+import styled from 'styled-components';
+import { Flex, Box, Avatar, Text, Modal, Button, Image, TextArea } from '@contco/core-ui';
 import Sidebar from './components/Sidebar';
+
+const StyledModal = styled(Modal)`
+  background-color: pink;
+  border-radius: 0px;
+`;
 
 const App = () => {
   const [isClosed, setIsClosed] = useState(false);
@@ -65,10 +71,10 @@ const App = () => {
         >
           <Text mx={23}>OPEN MODAL</Text>
         </Button>
-        <TextArea height="200px" width="500px"/>
-        <Image height="200px" width="500px" src="https://cdn2.thedogapi.com/images/r16sH664Q.gif" alt="Testing Image"/>
+        <TextArea height="200px" width="500px" />
+        <Image height="200px" width="500px" src="https://cdn2.thedogapi.com/images/r16sH664Q.gif" alt="Testing Image" />
       </Box>
-      <Modal isOpen={isClosed} onClose={setIsClosed}>
+      <StyledModal isOpen={isClosed} onClose={setIsClosed}>
         <Box p="20px" minWidth="400px">
           <Text fontSize={25} fontWeight="bold" textAlign="center">
             Avatars{' '}
@@ -173,8 +179,7 @@ const App = () => {
             Avatars{' '}
           </Text>
         </Box>
-      </Modal>
-
+      </StyledModal>
     </Flex>
   );
 };
